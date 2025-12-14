@@ -14,3 +14,16 @@ left join ref.LoincCodes LC
 /*
 lab results by encounter
 */
+
+select
+	ED.EncounterId
+	, ED.DxRank
+	, IC.Icd10Code DX_CODE
+	, IC.[Description] dx_description
+from ehr.diagnoses ED
+left join ref.Icd10Codes IC
+	on IC.Icd10Id=ED.Icd10Id;
+
+/*
+diagnosis results by encounter
+*/
