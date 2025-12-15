@@ -3,7 +3,8 @@ create or alter procedure dbo.member_payment_report
     , @PayerName varchar(200)
 as
 begin
-    select distinct
+    SET NOCOUNT ON;
+    select
         PA.PayerName
 		, PL.PlanName
         , P.MemberId
@@ -44,7 +45,7 @@ begin
         P.MemberId = @MemberId
         and
         PA.PayerName = @PayerName
-    order by ServiceFromDate
+    order by C.ServiceFromDate;
 end;
 
--- exec dbo.member_payment_report @MemberId = M0000000001 @PayerName = 'United Sample';
+-- exec dbo.member_payment_report @MemberId = M0000000001, @PayerName = 'United Sample';
