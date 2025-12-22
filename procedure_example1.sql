@@ -1,6 +1,7 @@
 create or alter procedure dbo.member_payment_report
     @MemberId varchar(30)
     , @PayerName varchar(200)
+with recompile
 as
 begin
     SET NOCOUNT ON;
