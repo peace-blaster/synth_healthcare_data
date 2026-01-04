@@ -1,10 +1,10 @@
 create or alter procedure dbo.member_payment_report
     @MemberId varchar(30)
     , @PayerName varchar(200)
-with recompile
+with recompile -- discard cached copy of procedure execution plan
 as
 begin
-    SET NOCOUNT ON;
+    SET NOCOUNT ON; --suppresses "changed n rows" reporting
     select
         PA.PayerName
 		, PL.PlanName
